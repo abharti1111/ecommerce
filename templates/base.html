@@ -1,0 +1,72 @@
+<!DOCTYPE html>
+<html>
+<head>
+	{% load static %}
+	<title>zintra</title>
+	<meta name="viewport" content="width=device-width, initial-scale=1">
+	<link rel="icon" href="{% static 'images/favicon.ico' %}" type="image/x-icon">
+  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+  <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
+
+	<link href="https://fonts.googleapis.com/css?family=Montserrat" rel="stylesheet">
+	<link rel="stylesheet" type="text/css" href="{% static 'css/master.css' %}">
+</head>
+<body>
+
+	<div class="preload">
+		<img src = "{% static 'images/4.gif' %}">
+
+	</div>
+	<div class="content">
+		<nav class="navbar navbar-default topnav" role='navigation' id="navbar">
+		  <div class="container">
+			<div class="navbar-header">
+
+			<a class="navbar-brand" href="{% url 'home' %}"><em style="font-size: 30px;color: white;
+    text-shadow: 2px 2px 4px #000000; "><i style="color: #d504ed;font-size: 40px">Z</i>intra</em></a></div>
+			<ul class="nav navbar-nav navbar-right">
+				{% if user.is_authenticated %}
+					<li><a href="#">Men</a></li>
+					<li><a href="#">Women</a></li>
+					<li><a href="#">Kids</a></li>
+					<li><a href="#">Home & Living</a></li>
+					<li><a href="#">Cart</a></li>
+					<li><a href="#">Track Order</a></li>
+					<li><a href="{% url 'accounts:logout' %}">logout ({{request.user.username}})</a></li>
+
+				{% else %}
+					<li><a href="#">Men</a></li>
+					<li><a href="#">Women</a></li>
+					<li><a href="#">Kids</a></li>
+					<li><a href="#">Home & Living</a></li>
+					<li><a href="{% url 'accounts:login' %}">Log In</a></li>
+					<li><a href="{% url 'accounts:signup' %}">Sign Up</a></li>
+
+				{% endif %}
+			</ul>
+		  </div>
+		</nav>
+		<div class="container">
+
+			{% block content %}
+
+
+
+			{% endblock %}
+		</div>
+		<div class="footer">
+		<p>Made with &hearts; from <a href="{% url 'home' %}">Zintra.com</a></p>
+		</div>
+	</div>
+
+	<script>
+		$(function(){
+			$(".preload").fadeOut(500,function(){
+				$(".content").fadeIn(250);
+			});
+		});
+	</script>
+
+</body>
+</html>

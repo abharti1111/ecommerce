@@ -1,0 +1,20 @@
+.footer {
+			position: fixed;
+			left: 0;
+			bottom: 0;
+			width: 100%;
+			background-color: #E59B8B;
+			color: red;
+			text-align: center;
+			}
+		.content{
+			display:none;
+		}
+		.preload{
+			margin:0;
+			position:absolute;
+			top:50%;
+			left:50%;
+			margin-right:-50%;
+			transform:translate(-50%,-50%);
+		}
